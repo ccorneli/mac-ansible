@@ -1,16 +1,17 @@
 #!/bin/sh
 
-## Note: this needs to be run as administrator
-if [id -Gn username | grep -q -w admin]; then
-	echo "Script needs admin privs. log into admin account:"
-	echo " su - admin"
-	exit 1
-fi
-
+## Note: first homebrew install needs admin privs to give proper permissions on directories for your account
 if ! [ -x "$(command -v brew)" ]; then
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  if   id -Gn  | grep -q -w admin ; then
+	echo "Admin privs found, doing Brew install..."
+  else
+	echo "Enable admin privs for your account to install homebrew for first time"
+	exit 1
+   fi
 fi
+#	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 echo "== brew installed, checking for updates..."
+exit 1
 brew update
 
 brew list --versions bash || brew install bash
