@@ -1,6 +1,11 @@
 #!/bin/sh
 
 ## Note: this needs to be run as administrator
+if [id -Gn username | grep -q -w admin]; then
+	echo "Script needs admin privs. log into admin account:"
+	echo " su - admin"
+	exit 1
+fi
 
 if ! [ -x "$(command -v brew)" ]; then
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
