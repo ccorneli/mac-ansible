@@ -16,6 +16,7 @@ PACKAGES=(
 	wget
 	openjdk
 	pyenv	
+	mas
 )
 echo "== Installing Packages.."
 
