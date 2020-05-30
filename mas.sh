@@ -6,6 +6,6 @@ if ! [ -x "$(command -v mas)" ]; then
 	echo "Error: 'mas' needs to be instlled from homebrew"
 	exit 1
 fi
-mas search 1password7
+echo "Nothing yet added to mas for Mac Applications"
 exit 0 
 
