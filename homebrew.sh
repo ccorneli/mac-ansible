@@ -4,25 +4,25 @@
 if ! [ -x "$(command -v brew)" ]; then
   if   id -Gn  | grep -q -w admin ; then
 	echo "Admin privs found, doing Brew install..."
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
   else
 	echo "Enable admin privs for your account to install homebrew for first time"
 	exit 1
    fi
+	else 
+echo "Homebrew installed"
+echo brew info
 fi
-#	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 echo "== brew installed, checking for updates..."
-exit 1
+
 brew update
 
 brew list --versions bash || brew install bash
 
+
+## Only Ansible needed here to bootstrap
 PACKAGES=(
-	maven
-	the_silver_searcher
-	wget
-	openjdk
-	pyenv	
-	mas
+  ansible
 )
 echo "== Installing Packages.."
 
@@ -32,24 +32,9 @@ do
 	brew list --versions $exe || brew install $exe
 done
 
-CASKS=(
-	beyond-compare
-	nvalt
-	java
-	oracle-jdk
-	cheatsheet
-	iterm2
-)
-
-for c in ${CASKS[@]}
-do
-	echo "== Checking $c ==========="	
-	brew cask list --versions $c || brew cask install $c
-done
-
-
 
 echo "Cleaning up... "
 brew cleanup
+brew doctor
 exit 0 
 

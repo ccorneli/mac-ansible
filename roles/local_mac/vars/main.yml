@@ -1,0 +1,26 @@
+homebrew_taps:
+- adoptopenjdk/openjdk
+
+homebrew_package_removals: []
+
+homebrew_packages:
+- gpg
+- maven
+- zsh
+- the_silver_searcher
+- wget
+- mas
+
+homebrew_cask_packages:
+- disk-inventory-x
+- adoptopenjdk8
+- adoptopenjdk11
+- adoptopenjdk15
+- beyond-compare
+- nvalt
+- cheatsheet
+- iterm2
+- visual-studio-code
+- intellij-idea
+- sublime-text
+- google-chrome
